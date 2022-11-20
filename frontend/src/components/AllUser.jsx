@@ -23,7 +23,6 @@ const AllUser = () => {
   const data=users.data
   
   return (
-    <>
     <Table>
       <TableHead>
         <TableRow>
@@ -48,15 +47,6 @@ const AllUser = () => {
         } */}
       </TableBody>
     </Table>
-    <div className="container">
-    {
-      
-      data.map((user)=>{
-        console.log(user.firstName)
-      })
-    }
-    </div>
-    </>
   );
 };
 
