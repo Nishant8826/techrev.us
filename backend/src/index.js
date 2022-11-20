@@ -10,10 +10,10 @@ dotenv.config({ path: "config.env" });
 const app = express();
 const multer = require("multer");
 
-app.use(cors())
-app.use(express.json());
-app.use(multer().any());
-app.use(cookieParser());
+app.use(cors())   //enable cors
+app.use(express.json());  //parsing json data
+app.use(multer().any());  //parsing multiform data
+app.use(cookieParser());   //for storing in cookies
 
 mongoose
   .connect((process.env.DB_URI || "mongodb+srv://NishantRathore:nhDG0WDTCrelUKJU@cluster0.usryq6s.mongodb.net/techrev"))

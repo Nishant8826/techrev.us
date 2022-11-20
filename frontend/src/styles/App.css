@@ -3,12 +3,8 @@
     padding: 0;
 }
 
-.main-doc{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.App{
+    background-color: rgb(238, 193, 176);
+    font-size: larger;
+    font-weight: 500;
 }
-
-/* body{
-    background-color: rgb(226, 160, 134);
-} */

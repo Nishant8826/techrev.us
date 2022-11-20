@@ -4,7 +4,7 @@ const { findOne } = require("../models/user");
 const usermodel = require("../models/user");
 const { uploadFile } = require("../utils/awsConfig");
 const Error = require("../utils/errorClass");
-const { isAlpha, isPhone, isPassword, isEmail } = require("../utils/validation");
+const { isAlpha, isPhone, isPassword, isEmail, isZipcode } = require("../utils/validation");
 
 exports.createUser = tryCatch(async (req, res, next) => {
   let data = req.body;
@@ -85,7 +85,7 @@ exports.createUser = tryCatch(async (req, res, next) => {
   }
   data.password = await bcrypt.hash(password, 12);
   data.confirmPassword = data.password;
-  if (!address.zipcode.match(/^[1-9][0-9]{5}$/)) {
+  if (!isZipcode(address.zipcode)) {
     return next(new Error(`enter valid pincode`, 400));
   }
   if (!files[0]) {
@@ -97,7 +97,7 @@ exports.createUser = tryCatch(async (req, res, next) => {
   const saveData = await usermodel.create(data);
   res.cookie("user_Id", saveData._id.toString(), {
     expires: new Date(
-      Date.now() + process.env.COOKIE_EXPIRES * 24 * 60 * 60 * 1000
+      Date.now() + (process.env.COOKIE_EXPIRES||5) * 24 * 60 * 60 * 1000
     ),
     httpOnly: true,
   });
@@ -131,7 +131,7 @@ exports.fetchUserById = tryCatch(async (req, res, next) => {
 exports.updateCustomer = tryCatch(async (req, res, next) => {
   const data = req.body;
   const files = req.files;
-  const prevDoc = await usermodel.findOne({ _id: req.cookies.user_Id });
+  const prevDoc = await usermodel.findOne({ _id: req.cookies.user_Id ,isDeleted:false});
   if (!prevDoc) {
     return next(new Error(`user not found`, 404));
   }
@@ -150,7 +150,13 @@ exports.updateCustomer = tryCatch(async (req, res, next) => {
     updatedObj.lastName =
       data.lastName[0].toUpperCase() + data.lastName.slice(1);
   }
+  if(data.userName){
+    updatedObj.userName=data.userName
+  }
   if (data.email) {
+    if(!isEmail(data.email)){
+      return next(new Error(`Email is not valid`,400))
+    }
     const isEmailUnique = await usermodel.findOne({ email: data.email });
     if (isEmailUnique) {
       return next(new Error(`This email is already registered`, 400));
@@ -204,8 +210,8 @@ exports.updateCustomer = tryCatch(async (req, res, next) => {
       updatedObj.address.zipcode = data.address.zipcode;
     }
   }
-  const updateCustomerObject = await usermodel.findByIdAndUpdate(
-    req.cookies.user_Id,
+  const updateCustomerObject = await usermodel.findOneAndUpdate(
+    {_id:req.cookies.user_Id},
     updatedObj,
     { new: true }
   );

@@ -21,7 +21,9 @@ const AllUser = () => {
     setUsers(response.data)
   }
   const data=users.data
+  
   return (
+    <>
     <Table>
       <TableHead>
         <TableRow>
@@ -36,13 +38,25 @@ const AllUser = () => {
           data.map((user)=>{
             return (
               <TableRow>
-                <TableCell>{data.firstName + " "+ data.lastName}</TableCell>
+                <TableCell>{user.firstName+" "+user.lastName}</TableCell>
+                <TableCell>{user.email}</TableCell>
+                <TableCell>{user.phone}</TableCell>
+                <TableCell>{user.address}</TableCell>
               </TableRow>
             )
           })
         } */}
       </TableBody>
     </Table>
+    <div className="container">
+    {
+      
+      data.map((user)=>{
+        console.log(user.firstName)
+      })
+    }
+    </div>
+    </>
   );
 };
 

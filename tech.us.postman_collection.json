@@ -1,0 +1,276 @@
+{
+	"info": {
+		"_postman_id": "3a96a1a7-1ca4-49f6-b0f0-7f4851d17d4d",
+		"name": "tech.us",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23677982"
+	},
+	"item": [
+		{
+			"name": "create user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "firstName",
+							"value": "pradeep",
+							"type": "text"
+						},
+						{
+							"key": "lastName",
+							"value": "Jha",
+							"type": "text"
+						},
+						{
+							"key": "userName",
+							"value": "jha169",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "preadeepJha12@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "8800784842",
+							"type": "text"
+						},
+						{
+							"key": "dob",
+							"value": "10-06-1999",
+							"type": "text"
+						},
+						{
+							"key": "gender",
+							"value": "Male",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Abc@123222",
+							"type": "text"
+						},
+						{
+							"key": "confirmPassword",
+							"value": "Abc@123222",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/I:/photo & sig/squarepic.blur.effect.photoeditor_2021321123622654.png"
+						},
+						{
+							"key": "address[address]",
+							"value": " RZ-A-31,Dabri Extension",
+							"type": "text"
+						},
+						{
+							"key": "address[landmark]",
+							"value": " Graveyard",
+							"type": "text"
+						},
+						{
+							"key": "address[city]",
+							"value": " New Delhi",
+							"type": "text"
+						},
+						{
+							"key": "address[state]",
+							"value": " Delhi",
+							"type": "text"
+						},
+						{
+							"key": "address[country]",
+							"value": " India",
+							"type": "text"
+						},
+						{
+							"key": "address[zipcode]",
+							"value": "110045",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:4000/insertCustomer",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"insertCustomer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get user list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:4000/selectCustomers",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"selectCustomers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get user by ID",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:4000/selectCustomerById",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"selectCustomerById"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:4000/deleteCustomer",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"deleteCustomer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "firstName",
+							"value": "gitansh",
+							"type": "text"
+						},
+						{
+							"key": "lastName",
+							"value": "Jha",
+							"type": "text"
+						},
+						{
+							"key": "userName",
+							"value": "p12345",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "rnishant428@gmail.com",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "phone",
+							"value": "9891416215",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "dob",
+							"value": "10-06-1994",
+							"type": "text"
+						},
+						{
+							"key": "gender",
+							"value": "Male",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Nishant@12345",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "confirmPassword",
+							"value": "Nishant@12345",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "address[address]",
+							"value": " RZ-A-31, PALAM",
+							"type": "text"
+						},
+						{
+							"key": "address[landmark]",
+							"value": " Graveyard no.2",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "address[city]",
+							"value": "Old Delhi",
+							"type": "text"
+						},
+						{
+							"key": "address[state]",
+							"value": "Dilli",
+							"type": "text"
+						},
+						{
+							"key": "address[country]",
+							"value": "Bharat",
+							"type": "text"
+						},
+						{
+							"key": "address[zipcode]",
+							"value": "100452",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/C:/Users/91965/OneDrive/Pictures/Screenshots/Screenshot (92).png"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:4000/updateCustomer",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"updateCustomer"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
