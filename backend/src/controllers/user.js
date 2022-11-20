@@ -182,10 +182,7 @@ exports.updateCustomer = tryCatch(async (req, res, next) => {
     updatedObj.password = await bcrypt.hash(data.password, 12);
     updatedObj.confirmPassword = updatedObj.password;
   }
-  if (files) {
-    if (!files[0]) {
-      return next(new Error(`Please provide image File`, 400));
-    }
+  if (files&&files.length>=1 ) {
     let fileURL = await uploadFile(files[0]);
     updatedObj.image = fileURL;
   }
